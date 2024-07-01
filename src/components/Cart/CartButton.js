@@ -6,6 +6,7 @@ import { showCartActions } from '../../store/show-cart-slice';
 const CartButton = (props) => {
   const dispatch = useDispatch();
   const isCartShown = useSelector(state => state.showCart.isCartShown);
+  const totalItems = useSelector(state => state.cart.totalItems);
   
   const clickHandler = () => {
     if (isCartShown) {
@@ -18,7 +19,7 @@ const CartButton = (props) => {
   return (
     <button className={classes.button} onClick={clickHandler}>
       <span>My Cart</span>
-      <span className={classes.badge}>1</span>
+      <span className={classes.badge}>{totalItems}</span>
     </button>
   );
 };
