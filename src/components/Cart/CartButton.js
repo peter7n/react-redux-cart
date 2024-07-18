@@ -5,15 +5,10 @@ import { showCartActions } from '../../store/show-cart-slice';
 
 const CartButton = (props) => {
   const dispatch = useDispatch();
-  const isCartShown = useSelector(state => state.showCart.isCartShown);
   const totalItems = useSelector(state => state.cart.totalItems);
   
   const clickHandler = () => {
-    if (isCartShown) {
-      dispatch(showCartActions.hide());
-    } else {
-      dispatch(showCartActions.show());
-    }
+    dispatch(showCartActions.toggle());
   }
 
   return (

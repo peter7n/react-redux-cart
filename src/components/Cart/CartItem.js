@@ -5,24 +5,18 @@ import { cartActions } from '../../store/cart-slice';
 
 const CartItem = (props) => {
   const dispatch = useDispatch();
-  const { title, quantity, total, price } = props.item;
+  const { id, title, quantity, total, price } = props.item;
 
   const incrementItemHandler = () => {
     dispatch(cartActions.add({
+      id: id,
       title: title,
       price: price,
-      quantity: 1,
-      total: price
     }))
   };
 
   const decrementItemHandler = () => {
-    dispatch(cartActions.remove({
-      title: title,
-      price: price,
-      quantity: 1,
-      total: price
-    }))
+    dispatch(cartActions.remove(id));
   }
 
   return (
